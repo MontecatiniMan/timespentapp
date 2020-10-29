@@ -1,28 +1,17 @@
+<?php
+use Illuminate\Support\Facades\Auth;
+?>
 @extends('layouts.app')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-4">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Projects') }}</div>
-                <div class="cart-body">
-                    <Projects />
-                </div>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Tasks') }}</div>
+                <div class="card-header">Tasks</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                    <Tasks token="{{ (Auth::user())->api_token }}" />
                 </div>
             </div>
         </div>
